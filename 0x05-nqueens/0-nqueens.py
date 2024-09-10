@@ -6,12 +6,10 @@ import sys
 def isSafe(Board, Row, Column):
     """ Checks if queen can move into column on the board"""
     for j in range(Row):
-        if (Board[j] == Column or
-                Board[j] + Row - j == Column or
-                Board[j] + j - Row == Column):
+        if (Board[j] == Column or 
+                abs(Board[j] - Column) == abs(Row - j)):
             return False
     return True
-
 
 def populate_row(Board, Line):
     """ Populates the chess board """
@@ -28,8 +26,8 @@ if len(sys.argv) != 2:
     sys.exit(1)
 try:
     n = int(sys.argv[1])
-except:
-    print("N must be a number")
+except ValueError:
+    print("N must be an integer (number)")
     sys.exit(1)
 if n < 4:
     print("N must be at least 4")
