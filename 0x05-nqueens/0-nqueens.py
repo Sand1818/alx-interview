@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" N Queens """
+""" N queens """
 import sys
 
 
@@ -18,13 +18,13 @@ if int(sys.argv[1]) < 4:
 n = int(sys.argv[1])
 
 
-def queens(n, i=0, h=[], k=[], j=[]):
+def queens(n, i=0, a=[], b=[], c=[]):
     if i < n:
         for j in range(n):
-            if j not in h and i + j not in k and i - j not in j:
-                yield from queens(n, i + 1, h + [j], k + [i + j], j + [i - j])
+            if j not in a and i + j not in b and i - j not in c:
+                yield from queens(n, i + 1, a + [j], b + [i + j], c + [i - j])
     else:
-        yield h
+        yield a
 
 
 def solve_queen(n):
